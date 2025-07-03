@@ -129,6 +129,4 @@ docker-compose down
 ---
 
 ## Notes
-- The API is documented with Swagger UI at `/docs` and ReDoc at `/redoc`.
 - Make sure the ports in `docker-compose.yml` match those in your documentation and code.
-- For production, consider using environment variables for configuration.
