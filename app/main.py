@@ -2,9 +2,10 @@
 
 from fastapi import FastAPI, HTTPException, status
 from contextlib import asynccontextmanager
+from typing import Optional
 
-from models import Document
-import es_client
+from app.models import Document
+import app.es_client as es_client
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -36,7 +37,7 @@ def add_document(doc: Document):
 
 
 @app.get("/search")
-def search(q: str | None = None, lang: str | None = None, exists_lang: str | None = None):
+def search(q: Optional[str] = None, lang: Optional[str] = None, exists_lang: Optional[str] = None):
     """
     Searches documents based on content or language availability.
 

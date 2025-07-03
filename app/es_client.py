@@ -1,7 +1,7 @@
-
 from elasticsearch import Elasticsearch
+from typing import Optional
 
-es_client = Elasticsearch("http://localhost:9200")
+es_client = Elasticsearch("http://elasticsearch:9200")
 INDEX_NAME = "multi_language_documents"
 
 def create_index_if_not_exists():
@@ -49,7 +49,7 @@ def insert_document(doc_id: str, document: dict):
         document=document
     )
 
-def search_documents(query: str | None = None, language: str | None = None, exists_lang: str | None = None):
+def search_documents(query: Optional[str] = None, language: Optional[str] = None, exists_lang: Optional[str] = None):
     """
     Searches for documents based on different criteria.
     - If 'exists_lang' is provided, it finds documents that have a translation in that language.
